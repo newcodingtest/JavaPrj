@@ -1,0 +1,9 @@
+package Abstract;
+
+public class PartTimeEmployee {
+	private String empno;
+	private String name;
+	private int pay;
+	private int workDay;
+
+}

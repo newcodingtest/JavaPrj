@@ -1,0 +1,37 @@
+
+public class ex03 {
+
+	public static void main(String[] args) {
+		
+		int startValue=2;
+		int endValue=1000;
+	
+		getPerfectNumber(startValue,endValue);
+	                                        }
+	
+	public static void getPerfectNumber(int startValue, int endValue) {
+		
+		for(int i=startValue; i<=endValue; i++) {
+			int sum=0;
+			if(endValue%startValue==0) {
+				sum+=i;
+			                           }
+			System.out.print(startValue+"~"+endValue+"까지의 완전수: ");
+			if(sum==getSum(i)) {
+				
+				System.out.print(i+"\t");
+			                   }
+			                                    }
+		                                                                }
+		
+	public static int getSum(int num) { //해당 약수들의 합 구하기
+		int sum=0;
+		for(int i=1; i<=num/2; i++) { //2를 나눈이유? 자기자신을 총합에서 제외, 반복횟수 최소화
+		if(num%i==0) {
+			sum+=i;
+		             }
+	                                 }
+		return sum;
+                                       }
+
+                    }

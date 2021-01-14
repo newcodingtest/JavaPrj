@@ -1,0 +1,23 @@
+
+public class Music {
+	private String songName;
+	private String singer;
+	private int playTime;
+	
+	public Music(String songName,String singer,int playTime) {
+		this.songName=songName;
+		this.singer=singer;
+		this.playTime=playTime;
+	}
+	
+	public void setsongName(String songName) {
+		this.songName=songName;
+		r
+	}
+	
+	public setsongName(String songName) {
+		this.songName=songName;
+	}
+	
+
+}

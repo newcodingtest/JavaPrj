@@ -1,0 +1,11 @@
+
+public class Music {
+	String musicName;
+	
+	public void getMusicName(String musicName) {
+		this.musicName=musicName;
+		
+	}
+	
+
+}

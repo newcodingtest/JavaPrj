@@ -1,0 +1,41 @@
+package Images;
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class EX_FrameBackground {
+
+	private JFrame frame;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EX_FrameBackground window = new EX_FrameBackground();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public EX_FrameBackground() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	
+
+	
+
+}
+}
+}

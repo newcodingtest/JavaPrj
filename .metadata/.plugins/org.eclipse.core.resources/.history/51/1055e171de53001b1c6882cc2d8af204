@@ -1,0 +1,12 @@
+package Abstract;
+
+public class PartTimeEmployeeMain {
+
+	public static void main(String[] args) {
+
+		PartTimeEmployee pe=new PartTimeEmployee("SMHRD003", "±è¿µµ¶", 10, 10);
+		System.out.println(pe.print());
+		System.out.println(pe.getMoneyPay());
+	}
+
+}

@@ -1,0 +1,51 @@
+package Images;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import javax.swing.JPanel;
+
+public class EX__CardLayout {
+
+	private JFrame frame;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EX__CardLayout window = new EX__CardLayout();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public EX__CardLayout() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		JPanel panel = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 64, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 424, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, panel);
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 187, SpringLayout.SOUTH, panel);
+		springLayout.putConstraint(SpringLayout.EAST, panel_1, 424, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel_1);
+	}
+}

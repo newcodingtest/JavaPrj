@@ -1,0 +1,23 @@
+package Abstract;
+
+public class TempEmployee {
+	private String empno;
+	private String name;
+	private int pay;
+	
+	public TempEmployee(String empno, String name, int pay) {
+		super();
+		this.empno = empno;
+		this.name = name;
+		this.pay = pay;
+	}
+	
+	public int getMoneyPay() {
+		return pay/12;
+	}
+	
+	public String print() {
+		return this.empno+":"+this.name+":"+this.pay;
+	}
+	
+}

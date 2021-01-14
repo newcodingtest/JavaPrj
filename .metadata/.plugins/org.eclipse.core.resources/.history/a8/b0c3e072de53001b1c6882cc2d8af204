@@ -1,0 +1,13 @@
+package Abstract;
+
+public class TenoEmployeeMain {
+
+	public static void main(String[] args) {
+
+		TempEmployee te=new TempEmployee("SMHRD002", "박영수", 3000);
+		
+		System.out.println(te.print());
+		System.out.println(te.getMoneyPay()+"만원");
+	}
+
+}

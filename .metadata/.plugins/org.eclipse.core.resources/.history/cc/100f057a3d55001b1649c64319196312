@@ -1,0 +1,18 @@
+create table bookinfo(
+num number primary key,
+book_title varchar2(100),
+book_author varchar2(50),
+book_pub varchar2(30),
+book_price number,
+book_date date
+);
+--시퀀스 생성
+--create sequence 시퀀스이름 start with 시작값 increment by 증가값
+create sequence book_num start with 1 increment by 1;
+
+--시퀀스삭제
+--drop sequence 시퀀스이름
+
+--코드규칙   A001 ~ 
+
+insert into BOOKINFO values(book_num.nextval,'A001','클린코드','로버트c마틴','윤주영',30000,sysdate);

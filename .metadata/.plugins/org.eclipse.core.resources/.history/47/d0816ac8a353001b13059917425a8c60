@@ -1,0 +1,23 @@
+package musicplayer;
+
+import java.util.ArrayList;
+
+//뮤직플레이어의 기능을 관리하는 클래스
+public class Musicplayer {
+	
+	//생성자는 객체를 사용하기전 초기화 하는것
+	
+		
+		ArrayList<Music>musiclist;
+		
+		public Musicplayer() { //노래정보를 초기화
+		Music m1=new Music("다시만날까봐","vos",15);
+		musiclist.add(m1);
+		
+		//ArrayList에 객체를 저장하는 방법 2
+		musiclist.add(new Music("보고싶다","김범수",30));
+		musiclist.add(new Music("소주한잔","임창정",58));
+		musiclist.add(new Music("hello","beyonce",270));
+	}
+
+}

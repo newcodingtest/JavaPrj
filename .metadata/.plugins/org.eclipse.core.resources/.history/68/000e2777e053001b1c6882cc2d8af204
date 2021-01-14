@@ -1,0 +1,29 @@
+package Abstract;
+
+public abstract class RegularEmployee extends AllEmployee{
+	private String empno;
+	private String name;
+	private int pay;
+	private int bonus;
+	
+
+	public RegularEmployee(String empno, String name, int pay, int bonus) {
+		
+		this.empno = empno;
+		this.name = name;
+		this.pay = pay;
+		this.bonus = bonus;
+	}
+
+	@Override
+	public int getMoneyPay() {
+		return (pay+bonus)/12;
+	}
+	
+
+
+	
+	
+	
+
+}

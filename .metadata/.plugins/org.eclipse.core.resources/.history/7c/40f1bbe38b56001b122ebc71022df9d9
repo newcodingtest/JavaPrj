@@ -1,0 +1,280 @@
+package guicontact;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+import javax.swing.SpringLayout;
+import javax.swing.JScrollPane;
+import javax.swing.AbstractButton;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class ContactView {
+
+	//사용한 컴포넌트 변수들을 선언
+	private JFrame frame;
+	private JLabel lbl_name,lbl_age,lbl_number;
+	private JButton addBtn, removeBtn, selectAllBtn;
+    private JList contact_list;
+    
+    //JList를 제어할model객체 선언
+    private DefaultListModel model;
+    private int pos;
+    private String selectName;
+    
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ContactView window = new ContactView();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ContactView() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 700, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel);
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		SpringLayout sl_panel_1 = new SpringLayout();
+		panel_1.setLayout(sl_panel_1);
+		
+		JPanel panel_header = new JPanel();
+		panel_header.setBackground(SystemColor.windowBorder);
+		panel_header.setToolTipText("");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_header, 10, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_header, 10, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_header, 83, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, panel_header, 674, SpringLayout.WEST, panel_1);
+		panel_1.add(panel_header);
+		
+		JPanel panel_info = new JPanel();
+		panel_info.setBackground(new Color(154, 205, 50));
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_info, 6, SpringLayout.SOUTH, panel_header);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_info, 342, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_info, 199, SpringLayout.SOUTH, panel_header);
+		sl_panel_1.putConstraint(SpringLayout.EAST, panel_info, -10, SpringLayout.EAST, panel_1);
+		panel_1.add(panel_info);
+		
+		JPanel panel_btn = new JPanel();
+		panel_btn.setBackground(SystemColor.info);
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_btn, 6, SpringLayout.SOUTH, panel_info);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_btn, 0, SpringLayout.WEST, panel_header);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_btn, -10, SpringLayout.SOUTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, panel_btn, 0, SpringLayout.EAST, panel_header);
+		panel_1.add(panel_btn);
+		SpringLayout sl_panel_btn = new SpringLayout();
+		panel_btn.setLayout(sl_panel_btn);
+		
+		addBtn = new JButton("\uC5F0\uB77D\uCC98 \uCD94\uAC00");
+		addBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//현재 창 종료
+				frame.dispose();//연락처 추가시 연락처목록 프레임 닫음
+				
+				//연락처정보 등록후 다시 연락처 목록창 띄우기
+				new ContactAddView().main(null);
+			}
+		});
+		
+		
+		addBtn.setFont(new Font("굴림", Font.BOLD, 20));
+		sl_panel_btn.putConstraint(SpringLayout.NORTH, addBtn, 10, SpringLayout.NORTH, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.WEST, addBtn, 89, SpringLayout.WEST, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.SOUTH, addBtn, -10, SpringLayout.SOUTH, panel_btn);
+		panel_btn.add(addBtn);
+		
+		removeBtn = new JButton("\uC5F0\uB77D\uCC98 \uC0AD\uC81C");
+		removeBtn.setFont(new Font("굴림", Font.BOLD, 18));
+		removeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//선택한 항목의 연락처를 삭제
+				model.remove(pos);
+				
+				//db에 있는 연락처 삭제
+				dao.deleteContact(selectName);
+				
+				
+			}
+		});
+		sl_panel_btn.putConstraint(SpringLayout.EAST, addBtn, -6, SpringLayout.WEST, removeBtn);
+		sl_panel_btn.putConstraint(SpringLayout.NORTH, removeBtn, 10, SpringLayout.NORTH, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.WEST, removeBtn, 253, SpringLayout.WEST, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.SOUTH, removeBtn, -10, SpringLayout.SOUTH, panel_btn);
+		panel_btn.add(removeBtn);
+		
+		selectAllBtn = new JButton("\uC804\uCCB4\uBCF4\uAE30");
+		selectAllBtn.setFont(new Font("굴림", Font.BOLD, 20));
+		selectAllBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		sl_panel_btn.putConstraint(SpringLayout.WEST, selectAllBtn, 399, SpringLayout.WEST, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.EAST, selectAllBtn, -126, SpringLayout.EAST, panel_btn);
+		sl_panel_btn.putConstraint(SpringLayout.EAST, removeBtn, -6, SpringLayout.WEST, selectAllBtn);
+		sl_panel_btn.putConstraint(SpringLayout.NORTH, selectAllBtn, 0, SpringLayout.NORTH, addBtn);
+		sl_panel_btn.putConstraint(SpringLayout.SOUTH, selectAllBtn, -10, SpringLayout.SOUTH, panel_btn);
+		panel_btn.add(selectAllBtn);
+		
+		JScrollPane contact_scroll = new JScrollPane();
+		sl_panel_1.putConstraint(SpringLayout.NORTH, contact_scroll, 6, SpringLayout.SOUTH, panel_header);
+		sl_panel_1.putConstraint(SpringLayout.WEST, contact_scroll, 0, SpringLayout.WEST, panel_header);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, contact_scroll, 199, SpringLayout.SOUTH, panel_header);
+		SpringLayout sl_panel_header = new SpringLayout();
+		panel_header.setLayout(sl_panel_header);
+		
+		JLabel lblNewLabel_3 = new JLabel("\uC804\uD654\uBAA9\uB85D");
+		sl_panel_header.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 10, SpringLayout.NORTH, panel_header);
+		sl_panel_header.putConstraint(SpringLayout.WEST, lblNewLabel_3, 258, SpringLayout.WEST, panel_header);
+		sl_panel_header.putConstraint(SpringLayout.SOUTH, lblNewLabel_3, -10, SpringLayout.SOUTH, panel_header);
+		lblNewLabel_3.setFont(new Font("굴림", Font.BOLD, 35));
+		panel_header.add(lblNewLabel_3);
+		sl_panel_1.putConstraint(SpringLayout.EAST, contact_scroll, -6, SpringLayout.WEST, panel_info);
+		panel_info.setLayout(new GridLayout(3, 2, 0, 0));
+		
+		JLabel lblNewLabel_2 = new JLabel("\uC774\uB984");
+		lblNewLabel_2.setFont(new Font("굴림", Font.BOLD, 20));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(lblNewLabel_2);
+		
+		lbl_name = new JLabel("New label");
+		lbl_name.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(lbl_name);
+		
+		JLabel label_1 = new JLabel("\uB098\uC774");
+		label_1.setFont(new Font("굴림", Font.BOLD, 20));
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(label_1);
+		
+		lbl_age = new JLabel("New label");
+		lbl_age.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(lbl_age);
+		
+		JLabel lblNewLabel = new JLabel("\uBC88\uD638");
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(lblNewLabel);
+		
+		lbl_number = new JLabel("New label");
+		lbl_number.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_info.add(lbl_number);
+		panel_1.add(contact_scroll);
+		
+		
+	    //1. db에서 연락처 목록 가져오기
+        ContactDAO dao=new ContactDAO();
+        ArrayList<ContactVO> contacts=dao.selectContactAll();  
+        
+       //2. JList에 연락처의 이름만 저장하기
+     
+        //model.addElement("홍길동");
+	
+		//연락처 목록 출력
+        model = new DefaultListModel();
+		contact_list = new JList(model);
+		model = (DefaultListModel)contact_list.getModel();
+		
+		//DB에서 연락처의 이름만 가져오기
+		for(int i=0; i<contacts.size(); i++) { // contact어레이 리스트에 select문 결과를 다 담고, 어레이리스트 길이만큼 반복
+			String name = contacts.get(i).getName(); // i번째 인덱스에서 Name만 추출
+			model.addElement(name); // 추출한 이름을 name이라는문자열 변수에 저장후 이를 추가
+		}
+		
+		contact_list.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//선택한 항목의 위치,이름을 변수에 저장
+				pos = contact_list.getSelectedIndex();
+				selectName=contact_list.getSelectedValue().toString();
+				
+				//선택한 항목의 이름번호정보를 가져오기위해 어레이리스트에접근
+				ContactVO contact = contacts.get(pos);
+				//JLabel에 이름 나이 번호 출력  
+				lbl_name.setText(contact.getName());
+				lbl_age.setText(contact.getAge()+"");
+				lbl_number.setText(contact.getPhone()); //ui상에서는 번호를 number로 받았으나 내가 메서드상에서는 phone으로 지정함
+			}
+		});
+        
+    
+        
+        
+		contact_scroll.setViewportView(contact_list);
+		
+		public void deleteContact(String selectName) {
+			
+			connetion();
+			  try { 
+			         connection();
+			         
+			         // 3. DB에 보낼 Query문 작성
+			         // PreparedStatement:자바프로그램과 sql사이에 데이터를 전송할수있는 통로를 만들어주는 역할
+			         // 인터페이스 클래스임으로 객체를 생성할수없음
+
+			         String sql = "insert into bookinfo values(book_num.nextval,?,?,?,?,?,sysdate)";
+			         pst = conn.prepareStatement(sql);
+			         pst.setString(1, book.getBook_code());
+			         pst.setString(2, book.getBook_title());
+			         pst.setString(3, book.getBook_author());
+			         pst.setString(4, book.getBook_Pub());
+			         pst.setInt(5, book.getBook_price());
+			         
+			         
+			         
+			   
+			         // 4, Query 실행
+			         pst.executeUpdate();
+
+
+			      } catch (SQLException e) {
+			         e.printStackTrace();
+			      } finally {
+			         // finally: try~catch문과는 상관없이 무조건 실행하는 구문
+
+			         // 6. db관련 연결객체 종료
+			         // ->종료하지 않을 경우 연결된 객체들이 쌓이게 되면서 db연결에 문제가 발생
+			         // Connection prepareStatement 는 무조건 종료를 해줘야함=반환해줘야함
+
+			         close();
+			      } // end try~catch~~finally
+			
+		}
+	}
+}

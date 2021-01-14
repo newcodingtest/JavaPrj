@@ -1,0 +1,45 @@
+package OOP;
+
+import java.util.Scanner;
+
+public class pocketmain {
+
+	public static void main(String[] args) {
+		//피카츄
+		Pocketmon pika=new Pocketmon("전기","피카츄",1800,150,1,"백만볼트");
+		//리자몽
+		Pocketmon Liza=new Pocketmon("불","리자몽",2000,180,2,"불대포");
+		
+		//한쪽의 체력이 0이 될때까지 배틀 진행하자!
+         
+		// 0.포켓몬 입력
+		Scanner sc=new Scanner(System.in);
+		System.out.println("포켓몬을 선택하세요:  1. 꼬북이 2. 리자몽");
+		int n=sc.nextInt();
+		
+		if(n==1) {  //꼬북이
+			System.out.println("1. 공격  2. 필살");
+			int n11=sc.nextInt();
+			if(n11==1) {//공격
+				
+			}else if(n11==2) {//필살
+				
+			}
+		}else if(n==2){ //리자몽
+			int n22=sc.nextInt();
+		}
+		// 1. 공격 2. 필살  
+		// 순서 꼬부기-리자몽
+		// 꼬부기 선제공격(공격력 만큼 상대 포켓몬의 체력이 감소)
+		// 리자몽 공격
+		// 꼬부기 필살기(공격령*2배 만큼의 상대 포켓몬의 체력이 감소)
+		// 리자몽 필살기
+
+		// 몇번의 공격 후에 배틀이 끝나는지 출력하기
+		// 누가 승자 패자인지 출력
+
+		
+
+	}
+
+}

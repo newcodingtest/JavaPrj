@@ -1,0 +1,8 @@
+package Inherence;
+
+public class Child extends Parent {
+
+	public void bbok() {
+		System.out.println("∫∫¿Ωπ‰¿ª ∏∏µÁ¥Ÿ");
+	}
+}

@@ -1,0 +1,24 @@
+package problem;
+
+public class b4 {
+
+	public static void main(String[] args) {
+		System.out.println(jumpCase(4)); //5
+
+	}
+public int jumpCase(int num) {
+	
+	int n1=1;
+	int n2=1;
+	int answer=0;
+	
+	for(int i=1; i<num; i++) {
+		answer=n1+n2;
+	}
+	
+	
+
+	
+}
+
+}

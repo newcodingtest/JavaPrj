@@ -1,0 +1,11 @@
+
+public class ex03오버로딩 {
+
+	public static void main(String[] args) {
+		
+		//메소드 오버로딩
+		// -메소드의 이름은 동일
+		// -매개변수의 타입 또는 개수를 다르게 정의하는 기법
+	}
+
+}

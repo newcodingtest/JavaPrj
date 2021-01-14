@@ -1,0 +1,116 @@
+package GUI;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class ex02_jlist {
+
+	private JFrame frame;
+	/**
+	 * @wbp.nonvisual location=31,449
+	 */
+	private final JTextField textField = new JTextField();
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ex02_jlist window = new ex02_jlist();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ex02_jlist() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		textField.setColumns(10);
+		frame = new JFrame();
+		frame.setBounds(100, 100, 650, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 265, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 306, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(scrollPane);
+		
+		JPanel panel_1 = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 4, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 86, SpringLayout.SOUTH, scrollPane);
+		
+		JList list = new JList();
+		scrollPane.setViewportView(list);
+		springLayout.putConstraint(SpringLayout.EAST, panel_1, 624, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		springLayout.putConstraint(SpringLayout.WEST, panel_2, -10, SpringLayout.EAST, panel_1);
+		springLayout.putConstraint(SpringLayout.EAST, panel_2, 0, SpringLayout.EAST, panel_1);
+		SpringLayout sl_panel_1 = new SpringLayout();
+		panel_1.setLayout(sl_panel_1);
+		
+		textField_1 = new JTextField();
+		sl_panel_1.putConstraint(SpringLayout.NORTH, textField_1, 27, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, textField_1, 10, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, textField_1, -10, SpringLayout.SOUTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, textField_1, 362, SpringLayout.WEST, panel_1);
+		panel_1.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, textField_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton, 23, SpringLayout.EAST, textField_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnNewButton, -32, SpringLayout.SOUTH, panel_1);
+		panel_1.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		sl_panel_1.putConstraint(SpringLayout.NORTH, btnNewButton_1, 0, SpringLayout.NORTH, textField_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, btnNewButton_1, 6, SpringLayout.EAST, btnNewButton);
+		panel_1.add(btnNewButton_1);
+		frame.getContentPane().add(panel_2);
+		
+		JPanel panel = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.SOUTH, panel_2);
+		springLayout.putConstraint(SpringLayout.WEST, panel, 6, SpringLayout.EAST, scrollPane);
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 255, SpringLayout.SOUTH, panel_2);
+		springLayout.putConstraint(SpringLayout.EAST, panel, 318, SpringLayout.EAST, scrollPane);
+		frame.getContentPane().add(panel);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
+		
+		JLabel lblNewLabel = new JLabel("\uC120\uD0DD\uB41C \uD56D\uBAA9 \uCD9C\uB825");
+		sl_panel.putConstraint(SpringLayout.NORTH, lblNewLabel, 102, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblNewLabel, 100, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewLabel, -87, SpringLayout.SOUTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblNewLabel, -92, SpringLayout.EAST, panel);
+		panel.add(lblNewLabel);
+	}
+}

@@ -1,0 +1,25 @@
+
+public class ex02완전수메소드 {
+
+	public static void main(String[] args) {
+
+		System.out.println(isPerfect(7));
+	}
+	public static boolean isPerfect(int num) {
+		
+		for(int i=1; i<=num/2; i++) {
+		if(num%i==0) {
+			if(i<2) {
+			
+				break;
+			}
+			
+		}
+		
+		return false;
+		}
+	
+		
+	}
+
+}

@@ -1,0 +1,26 @@
+package OOP;
+
+public class Poketmon {
+	
+	//1.field
+	//[타입] String type ,[이름] String name ,[체력] int hp,
+	//[공격력] int attack, [번호] int number
+	//[필살기] String last_attack
+	
+	private String type;
+	private String name;
+	private int hp;
+	private int attack;
+	private int number;
+	private String last__attack;
+	
+	//2.creator
+	
+    public Pocktmon(String type,String name){
+    	
+    	
+    }
+	
+	//3.method
+
+}

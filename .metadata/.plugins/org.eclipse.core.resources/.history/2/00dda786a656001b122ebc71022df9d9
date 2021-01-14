@@ -1,0 +1,85 @@
+package Images;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.CardLayout;
+
+public class EX__CardLayout {
+
+	private JFrame frame;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EX__CardLayout window = new EX__CardLayout();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public EX__CardLayout() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		JPanel panel = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 64, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 424, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel);
+		
+		JPanel parent = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, parent, 6, SpringLayout.SOUTH, panel);
+		springLayout.putConstraint(SpringLayout.WEST, parent, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, parent, 187, SpringLayout.SOUTH, panel);
+		
+		JButton btnNewButton = new JButton("first");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("second");
+		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("third");
+		panel.add(btnNewButton_2);
+		springLayout.putConstraint(SpringLayout.EAST, parent, 424, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(parent);
+		parent.setLayout(new CardLayout(0, 0));
+		
+		JPanel first_panel = new JPanel();
+		parent.add(first_panel, "name_11960117454500");
+		SpringLayout sl_first_panel = new SpringLayout();
+		first_panel.setLayout(sl_first_panel);
+		
+		JPanel panel_1 = new JPanel();
+		parent.add(panel_1, "name_12102894969300");
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel_1.add(lblNewLabel);
+		
+		JPanel panel_2 = new JPanel();
+		parent.add(panel_2, "name_12114543224300");
+	}
+}

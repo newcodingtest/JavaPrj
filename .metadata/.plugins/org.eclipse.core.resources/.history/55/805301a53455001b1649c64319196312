@@ -1,0 +1,10 @@
+package jdbc;
+
+
+//VO클래스 만들때는  DB에 만들어진  TABLE 의 컬럼수와 타입을 맟추어 작성
+public class MemberVO {
+	private String name;
+	private int age;
+	private String gender;
+
+}

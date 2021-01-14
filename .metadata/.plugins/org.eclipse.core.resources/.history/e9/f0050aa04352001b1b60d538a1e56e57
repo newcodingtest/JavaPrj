@@ -1,0 +1,15 @@
+package Inherence;
+
+public class MapleMain{
+	
+	public static void main(String[] args) {
+	//
+	Dodo dodo=new Dodo(100,100,"기본캐릭터");
+	dodo.go();
+	
+		
+	}
+		
+}
+
+

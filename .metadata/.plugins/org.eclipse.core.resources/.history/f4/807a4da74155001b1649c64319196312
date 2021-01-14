@@ -1,0 +1,15 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+
+public class BookDAO {
+	//DB연동에 필요한 객체변수 선언
+	private Connection conn;
+	private PreparedStatement pst;
+	private ResultSetet rs;
+	//도서관리에 필요한 기능정의
+
+}

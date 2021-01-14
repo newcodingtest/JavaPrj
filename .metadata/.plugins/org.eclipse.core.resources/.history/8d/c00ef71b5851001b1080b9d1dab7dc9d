@@ -1,0 +1,25 @@
+
+public class ex02완전수메소드 {
+
+	public static void main(String[] args) {//완전수:자기 자신을 제외한 양의 약수를 더했을 때 자기 자신이 되는 양의 정수
+
+		System.out.println(isPerfect(6));
+	}
+	
+	public static boolean isPerfect(int num) {
+		
+		return  num==getSum(num);
+	}
+	
+	public static int getSum(int num) { 
+		int sum=0;
+		for(int i=1; i<=num/2; i++) { 
+		if(num%i==0) {
+			sum+=i;
+		  }
+	  }
+		return sum;
+  }
+	
+
+}

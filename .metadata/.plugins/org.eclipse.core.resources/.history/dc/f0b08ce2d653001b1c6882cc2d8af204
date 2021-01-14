@@ -1,0 +1,10 @@
+package Abstract;
+
+public class RegularEmployeeMain {
+
+	public static void main(String[] args) {
+     
+		RegularEemployee re=new RegularEemployee();
+	}
+
+}

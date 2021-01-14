@@ -1,0 +1,24 @@
+package Inherence;
+
+public class ChineseMain {
+
+	public static void main(String[] args) {
+
+		Parent pr=new Parent();
+		
+		Child cd=new Child();
+		
+		//업캐스팅(UpCasting)-->암묵적 형변환
+		//래퍼런스 변수는 부모= 몸체 자식
+		Parent pr2=new Child();
+		
+		
+		pr.tangsu6();
+		cd.tangsu6();
+		pr.jjajang();
+		cd.jjajang();
+		pr2.jjajang();
+		//pr2.bbok();//이건 불가능-->부모가 가지고있는 기능이 아니기 때문에
+	}
+
+}

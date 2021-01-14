@@ -1,0 +1,12 @@
+package Abstract;
+
+public abstract class Car {
+
+	//키워드는? abstract
+	// 바퀴, 엔진 필드생성
+    protected int wheel;
+    protected String engine;
+    
+	
+	//앞으로가기, 뒤로가기, 엑셀 메소드 생성
+}

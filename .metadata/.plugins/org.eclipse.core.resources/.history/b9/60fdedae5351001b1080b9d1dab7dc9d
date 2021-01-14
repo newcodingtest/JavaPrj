@@ -1,0 +1,25 @@
+
+public class ex02완전수메소드 {
+
+	public static void main(String[] args) {
+
+		System.out.println(isPerfect(8));
+	}
+	
+	public static boolean isPerfect(int num) {
+		
+		return  num==getSum(num);
+	}
+	
+	public static int getSum(int num) { //해당 약수들의 합 구하기
+		int sum=0;
+		for(int i=1; i<=num/2; i++) { //2를 나눈이유? 자기자신을 총합에서 제외, 반복횟수 최소화
+		if(num%i==0) {
+			sum+=i;
+		  }
+	  }
+		return sum;
+  }
+	
+
+}

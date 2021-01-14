@@ -1,0 +1,11 @@
+package Abstract;
+
+public class AllEmployee {
+	
+	//1. 공통된 필드들 추상화
+	private String empno;
+	private String name;
+	private int pay;
+	
+
+}

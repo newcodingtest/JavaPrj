@@ -1,0 +1,18 @@
+
+public class Memeber {
+
+	private memberId;
+	private memberName;
+	
+	
+	
+	
+	
+	public String toString() {
+		return memberName+"님의 아이디는"+memberId+"입니다";
+	}
+}
+
+
+
+

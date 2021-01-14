@@ -1,0 +1,20 @@
+package OOP;
+
+public class STUDENT {
+  
+  String name;
+   String number;
+   int age;
+   int scorejava;
+   int scoreWeb;
+   int scoreAndroid;
+   
+   public void show() {
+	   System.out.println(name+"님 안녕?");
+	   System.out.println(number+" , "+age+"sal");
+	   System.out.println(name+"님의 java점수는"+scorejava +"입니다");
+	   System.out.println(name+"님의 web점수는"+scoreWeb +"입니다");
+	   System.out.println(name+"님의 android점수는"+scoreAndroid +"입니다");
+	   System.out.println(name+"님의 java점수는"+scorejava +"입니다");
+   }
+}

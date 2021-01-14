@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class MusicMain {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		boolean isPlay=true;
+		int pos=0;
+		
+		ArrayList<Music>musiclist=new ArrayList<Music>();
+	   
+		//4곡의 노래정보보를 musiclist에 초기화
+		//ArrayList에 객체를 저장하는 방법 1
+		Music m1=new Music("htp","mamaoo",15);
+		musiclist.add(m1);
+		
+		//ArrayList에 객체를 저장하는 방법 2
+		musiclist.add(new Music("hi","karara",30));
+		musiclist.add(new Music("bang~bang","bigbang",58));
+		musiclist.add(new Music("hello","beyonce",270));
+		
+		while(isPlay) {
+		 
+		System.out.println("[1]재생 [2]정지 [3]이전곡 [4]다음곡 [5]종료 :");
+		int buttom = sc.nextInt();
+		
+		switch (buttom) {
+		case 1: //재생
+		System.out.println(musiclist.get(pos));
+		case 2: //정지 
+			System.out.println("노래를 종료합니다");
+			break;
+
+		case 3: //이전곡
+			pos--;
+			System.out.println("이전곡을 재생합니다");
+			break;
+
+		case 4: // 다음곡 
+			if(pos==musiclist.size()-1) {
+				System.out.println("x");
+			}else {
+			pos++;
+			System.out.println("다음곡을 재생합니다");
+				}
+			break;
+
+		case 5:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		default:
+			System.out.println("잘못된 기능입니다 다시 선택해주세요");
+			break;
+		}
+		
+		}
+
+  }
+} 

@@ -1,0 +1,9 @@
+package Abstract;
+
+public class Avante extends Car {
+
+	public Avante(int wheel, String engine) {
+		super(wheel, engine);  //부모가 가지고 있는 생성자
+	}
+
+}

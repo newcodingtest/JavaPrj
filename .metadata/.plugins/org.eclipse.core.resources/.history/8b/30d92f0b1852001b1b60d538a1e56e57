@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+
+public class MemberMain {
+
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      Member m = new Member("dm","d");
+      System.out.println(m);
+      while(true) {
+
+         System.out.print("[1] 회원등록  [2] 전체 회원 조회  [3] 회원 삭제  [4] 종료   ");
+         int button=sc.nextInt();      
+         switch (button) {
+         case 1:
+            break;
+         case 2:
+            break;
+         case 3:
+            break;
+         case 4:
+            break;
+         default:
+            System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
+            break;
+         }
+         if (button==4) {
+            System.out.println("프로그램이 종료되었습니다.");
+            break;
+         }
+      }
+   }
+}

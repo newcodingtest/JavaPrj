@@ -1,0 +1,88 @@
+package GUI;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class ex01_jtable {
+
+	private JFrame frame;
+	private JTable table;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ex01_jtable window = new ex01_jtable();
+					window.frame.setVisible(true);             //창을 열어서 보여주겠다
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public ex01_jtable() {
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame();
+		frame.setTitle("Jtable 예제");
+		frame.setBounds(100, 100, 650, 400);//X축,  Y축,  너비(width), 높이(height)
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		JPanel panel = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 298, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 624, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 6, SpringLayout.SOUTH, panel);
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, 0, SpringLayout.WEST, panel);
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1, 0, SpringLayout.EAST, panel);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		sl_panel.putConstraint(SpringLayout.NORTH, scrollPane, 10, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, scrollPane, 278, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, scrollPane, 604, SpringLayout.WEST, panel);
+		panel.add(scrollPane);
+		
+		//Jtable 데이터초기화
+		//컬럼명은 1차원 배열, 행 데이터는 2차원 배열로 구성
+		String[] colNames= {"이름","java","iot","web"};
+		String[][] rowDatas= {
+				{"윤주영","80","65","72"},
+				{"채평성","97","55","76"},
+				{"김경태","95","50","98"}
+				
+				
+		};
+		
+		table = new JTable(rowDatas, colNames); //데이터를 테이블쪽에 넘겨준다
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//마우스로 테이블을 클릭했을 때 실행할 로직을 작성
+			}
+		});
+		
+		scrollPane.setViewportView(table);
+		frame.getContentPane().add(panel_1);
+	}
+}

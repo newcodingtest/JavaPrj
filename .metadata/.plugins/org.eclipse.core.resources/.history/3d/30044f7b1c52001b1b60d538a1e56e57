@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class MemberMain {
+
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      Member m = new Member("pulpul8282","윤주영");
+      boolean isPlay=true;
+      //
+      ArrayList<Member> memberList=new ArrayList<Member>();
+      System.out.println("==========[회원관리 프로그램]==========");
+      
+      
+      while(isPlay) {
+         System.out.println("[1] 회원등록  [2] 전체 회원 조회  [3] 회원 삭제  [4] 종료   ");
+         int button=sc.nextInt();     
+         
+         switch (button) {
+         case 1:
+        	 System.out.print("등록할 회원 아이디: ");
+        	 String id=sc.next();
+        	 System.out.print("등록할 회원 이름: ");
+        	 String name=sc.next();
+        	 
+        	//아이디와 정보를 이용하여 회원객체로 생성
+        	 Member member=new Member(id,name);
+        	 
+        	 //회원객체를 리스트에 저장
+        	 memberList.add(member);
+        	 System.out.println(memberList.size());
+        	 
+            break;
+         case 2:
+        	 //forEach문-반복문의 한 종류, 순서대로 접근할 때 사용
+        	 //for(자료형 변수명:리스트 변수명){
+        	 
+             //   }
+
+        	 for(Member m1:memberList) {
+        		 System.out.println(m1);
+        	 }
+            break;
+            
+         case 3:
+        	 System.out.print("삭제할 아이디 입력: ");
+            break;
+         case 4:
+            break;
+         default:
+            System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
+            break;
+         }
+         if (button==4) {
+            System.out.println("프로그램이 종료되었습니다.");
+            isPlay=false;
+            break;
+         }
+      }
+   }
+}

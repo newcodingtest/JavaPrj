@@ -1,0 +1,7 @@
+package Abstract;
+
+public abstract class Car {
+
+	//키워드는? abstract
+	
+}

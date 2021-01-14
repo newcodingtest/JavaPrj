@@ -1,0 +1,22 @@
+package problem;
+
+public class b4 {
+
+	public static void main(String[] args) {
+
+	}
+public int jumpCase(int num) {
+	
+	int temp=1;
+	while (temp<=num) {
+		int result=0;
+	    if
+	}
+			
+	
+	
+	return num;
+	
+}
+
+}

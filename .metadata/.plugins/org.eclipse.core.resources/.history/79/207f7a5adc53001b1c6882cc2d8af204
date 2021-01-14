@@ -1,0 +1,10 @@
+package Abstract;
+
+public class PartTimeEmployeeMain {
+
+	public static void main(String[] args) {
+
+		PartTimeEmployee pe=new PartTimeEmployee("SMHRD001", "±è¿µµ¶", 10, 10)
+	}
+
+}

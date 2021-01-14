@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class MusicMain {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		ArrayList<Music>musiclist=new ArrayList<Music>();
+		System.out.println("[1]재생 [2]정지 [3]이전곡 [4]다음곡 [5]종료 :");
+		int buttom=sc.nextInt();
+		
+		switch (buttom) {
+		case 1:
+			System.out.println("플레이어를 종료합니다");
+			break;
+			
+		case 2:
+			System.out.println("플레이어를 종료합니다");
+			break;
+			
+		case 3:
+			System.out.println("플레이어를 종료합니다");
+			break;
+			
+		case 4:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		
+		case 5:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		
+	}
+
+}

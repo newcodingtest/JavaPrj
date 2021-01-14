@@ -1,0 +1,62 @@
+package guicontact;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+import javax.swing.SpringLayout;
+
+public class ContactView {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ContactView window = new ContactView();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ContactView() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 700, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel);
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		SpringLayout sl_panel_1 = new SpringLayout();
+		panel_1.setLayout(sl_panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		sl_panel_1.putConstraint(SpringLayout.NORTH, panel_2, 10, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.WEST, panel_2, 10, SpringLayout.WEST, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.SOUTH, panel_2, 66, SpringLayout.NORTH, panel_1);
+		sl_panel_1.putConstraint(SpringLayout.EAST, panel_2, 424, SpringLayout.WEST, panel_1);
+		panel_1.add(panel_2);
+	}
+}

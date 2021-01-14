@@ -1,0 +1,35 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+
+public class BookDAO {
+	//DB연동에 필요한 객체변수 선언
+	private Connection conn;
+	private PreparedStatement pst;
+	private ResultSet rs;
+	//도서관리에 필요한 기능정의
+	
+	public ArrayList<BookVO> selectBookAll() {
+		ArrayList<BookVO> list=new ArrayList<BookVO>();
+		return list;
+	}
+    
+	public BookVO selectBook() { 
+		BookVO vo=null;
+		return vo;
+	}
+	
+	public void insertBookAll(BookVO book) { //5개의 정보만, 날짜 책번호는 시퀀스로 인해 자동으로 생성
+		
+	}
+	
+	public void updateBook() {
+	}
+	
+	public void deleteBook() {
+	}
+}

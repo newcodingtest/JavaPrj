@@ -1,0 +1,19 @@
+package Test;
+
+public class Machine {
+	
+	
+	public void start(Doll doll){
+	    doll.pick();
+	}
+	
+//	public void start(pa2 p2){
+//		p2.pick();
+//		}
+//	
+//	public void start(kobuk kb){
+//		kb.pick();
+//		}
+//	
+
+}

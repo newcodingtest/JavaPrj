@@ -1,0 +1,14 @@
+package Inherence;
+
+public class MapleMain extends Maple {
+	
+	//
+	Dodo dodo=new Dodo(100,100,"기본캐릭터")
+	
+		
+		
+		
+
+	}
+
+

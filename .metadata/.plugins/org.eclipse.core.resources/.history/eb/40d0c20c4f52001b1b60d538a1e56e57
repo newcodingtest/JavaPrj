@@ -1,0 +1,16 @@
+package Inherence;
+
+public class ChineseMain {
+
+	public static void main(String[] args) {
+
+		Parent pr=new Parent();
+		
+		Child cd=new Child();
+		
+		//업캐스팅
+		//래퍼런스 변수는 부모 몸체 자식
+		Parent pr2=new Child();
+	}
+
+}

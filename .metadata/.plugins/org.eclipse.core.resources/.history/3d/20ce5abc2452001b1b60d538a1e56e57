@@ -1,0 +1,14 @@
+
+public class Music {
+	String musicName;
+	
+	public String getMusicName() {
+		return musicName;
+	}
+	
+	public void setMusicName(String musicName) {
+		this.musicName=musicName;
+	}
+	
+
+}

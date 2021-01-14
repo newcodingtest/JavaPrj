@@ -1,0 +1,54 @@
+package jdbc;
+
+import java.util.Scanner;
+
+public class Book_Main {
+
+	public static void main(String[] args) {
+		// 1. 아래와 같이 메뉴를 출력하는 프로그램을 작성하시오
+		// ======================도서 관리 프로그램
+		// 1.전체도서검색 2.도서검색 3.도서입고 4.도서수정 5.도서삭제 6.종료>>
+		boolean isPlay=true;
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("=====도서관리프로그램 입니다.=====");
+		
+		while(isPlay) {
+		System.out.println("1.전체도서검색 2.도서검색 3.도서입고 4.도서수정 5.도서삭제 6.종료>>");
+		int select = sc.nextInt();
+
+		
+		switch (select) {
+		// ===================전체도서검색=======================
+		case 1://전체도서검색
+
+			break;
+
+		// ===================도서검색==========================
+		case 2://도서검색
+
+			break;
+		// ===================도서입고==========================
+		case 3://도서입고
+
+			break;
+		// ===================도서수정==========================
+		case 4://도서수정
+
+			break;
+		// ===================도서삭제==========================
+		case 5:// 도서삭제
+			System.out.println("삭제할 도서의 책명을 입력해주세요");
+			break;
+		// ===================종료============================
+		case 6:// 종료
+			System.out.println("도서 프로그램을 종료합니다");
+			isPlay = false;
+
+		default:
+		  }//switch
+	  }//while
+
+	}
+
+}

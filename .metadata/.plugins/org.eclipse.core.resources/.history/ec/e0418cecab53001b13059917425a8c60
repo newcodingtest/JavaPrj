@@ -1,0 +1,70 @@
+package musicplayer;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class MusicMain2 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		boolean isPlay=true;
+		
+
+		Musicplayer mPlayer=new Musicplayer();
+
+		ArrayList<Music>musiclist=new ArrayList<Music>();
+	   
+		
+		while(isPlay) {
+		 
+		System.out.println("[1]재생 [2]정지 [3]이전곡 [4]다음곡 [5]종료 :");
+		int button = sc.nextInt();
+		
+		switch(button) {
+	
+		case 1: //재생
+			
+		System.out.println(mPlayer.play());
+		case 2: //정지 
+			System.out.println(mPlayer.stop());
+			break;
+
+		case 3: //이전곡
+			Music m=mPlayer.prePlay();
+			
+			if(m==null) {
+				System.out.println("이전곡을 실행할 수 없습니다");
+			}else {
+			    
+			    System.out.println(m);
+				}
+			break;
+
+		case 4: // 다음곡 
+			m=mPlayer.nextPlay();
+			if(m==null) {
+				System.out.println("다음곡을 실행할 수 없습니다");
+			}else {
+			    
+			    System.out.println(m);
+				}
+			break;
+		case 5:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		default:
+			System.out.println("잘못된 기능입니다 다시 선택해주세요");
+			break;
+		}
+		
+		if(button==5) {
+			break;
+		}
+		
+		}
+
+  }
+} 

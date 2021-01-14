@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class MusicMain {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		ArrayList<Music>musiclist=new ArrayList<Music>();
+		   System.out.println("======노래를 등록하세요======");
+		   System.out.print("노래이름: ");
+		String name=sc.next();
+		   System.out.print("가수이름: ");
+		String singer=sc.next();
+		   System.out.print("재생시간");
+		int playTime=sc.nextInt();
+		
+		Music music=new Music(name,singer,playTime);
+		musiclist.add(music);
+		  System.out.println(musiclist.size());
+		  boolean isPlay=true;
+		
+		while(isPlay) {
+			System.out.println("[1]재생 [2]정지 [3]이전곡 [4]다음곡 [5]종료 :");
+			int buttom=sc.nextInt();
+		switch (buttom) {
+		
+		case 1:
+			System.out.println();
+			break;
+			
+		case 2:
+			System.out.println("플레이어를 종료합니다");
+			break;
+			
+		case 3:
+			System.out.println("플레이어를 종료합니다");
+			break;
+			
+		case 4:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		
+		case 5:
+			System.out.println("플레이어를 종료합니다");
+			break;
+		default :
+			System.out.println("잘못된 기능입니다 다시 선택해주세요");
+			break;
+	}
+		}
+
+  }
+} 
